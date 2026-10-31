@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.heroGame.controller.MainController"
+            prefWidth="900" prefHeight="600">
+
+    <top>
+        <Label text="HeroGame - Player Report" style="-fx-font-size:20px; -fx-font-weight:bold; -fx-padding:10;"/>
+    </top>
+
+    <center>
+        <TableView fx:id="playerTable" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colPlayerId" text="Player Id" prefWidth="80"/>
+                <TableColumn fx:id="colPlayerName" text="Player name" prefWidth="180"/>
+                <TableColumn fx:id="colHighScore" text="High Score" prefWidth="100"/>
+                <TableColumn fx:id="colLevel" text="Level" prefWidth="80"/>
+                <TableColumn fx:id="colNational" text="National" prefWidth="140"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="300">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Player details" style="-fx-font-weight:bold;"/>
+            <Label text="Player Name:"/>
+            <TextField fx:id="txtPlayerName"/>
+
+            <Label text="High Score:"/>
+            <TextField fx:id="txtHighScore"/>
+
+            <Label text="Level:"/>
+            <TextField fx:id="txtLevel"/>
+
+            <Label text="National:"/>
+            <ComboBox fx:id="cmbNational" maxWidth="Infinity"/>
+
+            <HBox spacing="8">
+                <Button text="Add Player" onAction="#onAddPlayer"/>
+                <Button text="Remove Player" onAction="#onRemovePlayer"/>
+            </HBox>
+            <Button text="Clear form" onAction="#onClearForm" maxWidth="Infinity"/>
+
+            <Separator/>
+
+            <Label text="National management" style="-fx-font-weight:bold;"/>
+            <HBox spacing="8">
+                <TextField fx:id="txtNewNational" promptText="New national name" HBox.hgrow="ALWAYS"/>
+                <Button text="Add" onAction="#onAddNational"/>
+            </HBox>
+            <Button text="Remove selected National" onAction="#onRemoveNational" maxWidth="Infinity"/>
+
+            <Separator/>
+
+            <Label text="Search / Reports" style="-fx-font-weight:bold;"/>
+            <HBox spacing="8">
+                <TextField fx:id="txtSearchName" promptText="Find player by name" HBox.hgrow="ALWAYS"/>
+                <Button text="Find" onAction="#onFindByName"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button text="Show All" onAction="#onShowAll"/>
+                <Button text="Top 10 Players" onAction="#onTop10"/>
+            </HBox>
+
+            <Label fx:id="lblStatus" style="-fx-text-fill:#d32f2f;" wrapText="true"/>
+        </VBox>
+    </right>
+
+</BorderPane>
